@@ -72,26 +72,33 @@ const para = document.createElement("p");
 
 
 
-//working on this fucntion not completed yet
-function wor(oo){
 
-  for(let k = 0; k < list.length; k++){
+function wor(){
+ 
+  for(let i = 0; i < questions.length; i++){
+    if(count === i){
+    const c = questions[i].choices
 
-    
-    if(k === questions[k].correctAnswer ){
-      score++
-      alert("correct " + score)
-      list[k].style.color = "green"
-  
-    } else if(k !== questions[k].correctAnswer){
-       list[k].style.color = "red"
+    for(let j = 0; j < list.length; j++){ 
+ 
+    if(j === questions[i].correctAnswer ){
+      list[j].style.backgroundColor = "#f2fff0"
        
+  
+    } else if(j !== questions[i].correctAnswer){
+       list[j].style.backgroundColor = "#fff2f2"
     
     }  
-  }
- 
+           
+    }
+      }
+        }
+          }
+      
+    
 
-}
+
+
 
 function dis(obj){
 
@@ -102,7 +109,7 @@ function dis(obj){
      if(count === i){
        const q = questions[i].question
        co.textContent = q
-     } // return the res if its ot equal to it
+     } 
    }
 }
 
@@ -110,6 +117,8 @@ function dis(obj){
 //how to them in a list so whey can be selected 
 function op(obj){
 
+
+  let clickable = true;
     l.style.display = "flex";
     l.style.justifyContent  = "center"
     
@@ -120,44 +129,32 @@ function op(obj){
         
       for(let j = 0; j < list.length; j++){
       list[j].textContent = c[j]
-      list[j].style.color = "black";
-
+      list[j].style.backgroundColor = "#ffff";
       list[j].onclick = function() {
        
-       
-        
-         
-          
-          count++;
-          dis();
-          op();
-          
+        if (!clickable) return; // stops the function if not clickable
 
-
-          if (count < questions.length) {
-            
-          } else {
-         
-            co.style.display = "none";
-            l.style.display = "none";
-            btn.style.display = "none";
-            btn1.style.display = "none";
-            btn2.style.display = "inline-block";
-            res();
-          }
-         
+        clickable = false;
+        wor();
+        if(j === questions[i].correctAnswer ){
+          score++
+          console.log(score)
+        } else if(j !== questions[i].correctAnswer){
+            wrong++
+          console.log(wrong)
+        }  
 
         }
-      
+        
   
           }
         }
        
      }
     }
-//list[j].style.backgroundColor = "#fff2f2"
-//list[j].style.backgroundColor = "#f2fff0"
 
+
+   
     function res(){
 
      
@@ -188,6 +185,11 @@ function op(obj){
     
    btn2.style.display = "none"
     
+
+
+   btn.onclick = function() {
+    clickable = true;
+  }
 // Adding a click event listener
 btn.addEventListener('click', function() {
      count++
@@ -195,6 +197,7 @@ btn.addEventListener('click', function() {
      
      dis(questions)
      op(questions)
+    
      if(count > questions.length -1){
       co.style.display = "none"
       l.style.display = "none"
@@ -211,6 +214,7 @@ btn1.addEventListener('click', function() {
   dis(questions)
   op(questions)
 
+ 
 
   if(count < 0){
     count = 0;
