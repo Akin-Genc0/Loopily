@@ -53,7 +53,7 @@ const questions = [
 
 let count = 0;
 let score = 0;
-let wrong = 0;
+
 const co = document.getElementById("content");
 
 const l = document.getElementById("l");
@@ -70,9 +70,6 @@ const para = document.createElement("p");
 
 
 
-
-
-
 function wor(){
  
   for(let i = 0; i < questions.length; i++){
@@ -83,7 +80,7 @@ function wor(){
  
     if(j === questions[i].correctAnswer ){
       list[j].style.backgroundColor = "#f2fff0"
-       
+      
   
     } else if(j !== questions[i].correctAnswer){
        list[j].style.backgroundColor = "#fff2f2"
@@ -119,8 +116,8 @@ function op(obj){
 
 
   let clickable = true;
-    l.style.display = "flex";
-    l.style.justifyContent  = "center"
+  l.style.display = "flex";
+  l.style.justifyContent  = "center"
     
  
     for(let i = 0; i < questions.length; i++){
@@ -153,7 +150,7 @@ function op(obj){
      }
     }
 
-
+  
    
     function res(){
 
@@ -161,15 +158,16 @@ function op(obj){
       para.style.display = "flex"
       para.style.justifyContent  = "center"
        para.style.marginTop  = "5vw"
+       
    
       if( score >= questions.length){
 
-        para.textContent = "Your score is " + score + "/" + questions.length;
+        para.textContent = "You Scored " + score + "/" + questions.length;
         document.getElementById('re').appendChild(para);
 
       } else if (score < questions.length && count > questions.length -1){
 
-        para.textContent = "Your score is " + score + "/" + questions.length;
+        para.textContent = "You Scored " + score + "/" + questions.length;
         document.getElementById('re').appendChild(para);   
       }
      
@@ -177,7 +175,12 @@ function op(obj){
 
 
    
-     
+        function time() {
+          count++
+          op()
+          dis()
+        }
+
     op(questions)
     dis(questions)
     
@@ -185,7 +188,7 @@ function op(obj){
     
    btn2.style.display = "none"
     
-
+ 
 
    btn.onclick = function() {
     clickable = true;
