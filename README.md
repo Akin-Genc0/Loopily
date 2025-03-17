@@ -19,9 +19,9 @@ A simple quiz application built to refresh my DOM manipulation and event handlin
 
 ## Tools Used
 
-- **HTML:** Structure of the web page.
-- **CSS:** Styling and layout.
-- **JavaScript:** Logic, DOM manipulation, and event handling.
+- **HTML:** 
+- **CSS:** 
+- **JavaScript:** 
 
 ## Features
 
